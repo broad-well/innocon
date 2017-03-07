@@ -1,0 +1,25 @@
+{
+  "name": "mp-innocon-client",
+  "version": "0.0.1",
+  "description": "Frontend of Michael Peng's Innovation Convention Project",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-ts": "^6.0.0-beta.14",
+    "grunt-tslint": "^4.0.1",
+    "grunt-typedoc": "^0.2.4",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Peng <michael@mcmoo.org>",
+  "license": "Unlicense"
+}

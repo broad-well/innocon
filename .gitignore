@@ -1,0 +1,12 @@
+# node.js modules
+node_modules/
+
+# vscode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Grunt output
+/server/out
+/client/out
