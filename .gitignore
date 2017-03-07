@@ -10,3 +10,7 @@ node_modules/
 # Grunt output
 /server/out
 /client/out
+
+# Typings
+/server/typings
+/client/typings
