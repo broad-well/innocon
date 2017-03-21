@@ -4,13 +4,14 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         tslint: {
             options: {
-                configuration: 'tslint.json'
+                configuration: 'tslint.json',
+                force: true,
             },
             files: {
                 src: [
                     'src/rest.ts',
-                ]
-            }
+                ],
+            },
         },
         ts: {
             default: {
@@ -22,6 +23,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-tslint');
     grunt.loadNpmTasks('grunt-ts');
 
-    grunt.registerTask('default', ['ts']);
+    grunt.registerTask('default', ['tslint', 'ts']);
 
 }

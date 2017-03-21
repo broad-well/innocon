@@ -19,4 +19,5 @@ node_modules/
 *.swp
 
 # tsc dumps
-*.map
+.tscache/
+.baseDir.ts

@@ -1,10 +1,11 @@
 {
 	"compilerOptions": {
-		"target": "es6",
-        "strictNullChecks": true
+        "outDir": "out",
+		"target": "es5",
+        "strictNullChecks": true,
+        "moduleResolution": "node"
 	},
     "include": [
         "src/*"
-    ],
-    "outDir": "out/"
+    ]
 }

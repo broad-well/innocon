@@ -4,7 +4,9 @@
   "description": "Backend of Michael Peng's Innovation Convention project",
   "main": "index.js",
   "dependencies": {
+    "bunyan": "^1.8.8",
     "js-yaml": "^3.8.2",
+    "loglevel": "^1.4.1",
     "restify": "^4.3.0"
   },
   "devDependencies": {

@@ -5,6 +5,7 @@
     "restify": "registry:dt/restify#2.0.0+20170223084135"
   },
   "globalDependencies": {
+    "loglevel": "registry:dt/loglevel#1.4.0+20160510002910",
     "node": "registry:dt/node#7.0.0+20170310052549"
   }
 }
