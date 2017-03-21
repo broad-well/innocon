@@ -10,11 +10,9 @@
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-uglify": "^2.2.0",
-    "grunt-sass": "^2.0.0",
     "grunt-shell": "^2.1.0",
     "grunt-ts": "^6.0.0-beta.14",
     "grunt-tslint": "^4.0.1",
-    "grunt-typedoc": "^0.2.4",
     "tslint": "^4.5.1",
     "typescript": "^2.2.1",
     "uglify-save-license": "^0.4.1"
