@@ -9,6 +9,7 @@ import * as Restify from 'restify';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as logger from 'loglevel';
+import * as path from 'path';
 let conf = require('./config');
 
 export const server = Restify.createServer();
@@ -25,6 +26,59 @@ function createResponse(status_: Status, keyval: Object): Object {
 // Setup loglevel
 logger.setLevel(0);
 
+// Directive folder-based service
+
+export class DirectoryMirror {
+    dirPath: string;
+    fileExt: string; // Note: includes the fullstop ('.yml', for example)
+    restPath: string; // Example: product/burner goes to /product/burner and /product/burner/:id
+
+    // CACHE - UPDATE UPON REQUEST
+    listing: string[];
+    objects: {[id: string]: any};
+
+    constructor(path: string, ext: string, rest: string) {
+        this.dirPath = path;
+        this.fileExt = ext;
+        this.restPath = rest;
+        this.updateCache();
+
+        server.get(`/${this.restPath}`, (req, res, next) => {
+            res.send(200, createResponse('info', {
+                'listing': this.listing,
+            }));
+            return next();
+        });
+        server.get(`/${this.restPath}/:id`, (req, res, next) => {
+            if (!(req.params.id in this.objects)) {
+                res.send(404, createResponse('error', {
+                    'errorMessage': 'directory:enoent',
+                }));
+                return;
+            }
+            res.send(200, this.objects[req.params.id]);
+            return next();
+        });
+    }
+
+    updateCache() {
+        this.listing = fs.readdirSync(this.dirPath).filter(val => val.charAt(0) !== '.' && val.charAt(0) !== '_')
+            .map(val => val.substr(0, val.length - this.fileExt.length));
+        for (let id of this.listing) {
+            this.objects[id] = this.getDataById(id);
+        }
+    }
+
+    getDataById(id: string): any|null {
+        let filePath = path.join(this.dirPath, id + this.fileExt);
+        if (fs.existsSync(filePath)) {
+            return yaml.safeLoad(fs.readFileSync(filePath, 'utf8'));
+        } else {
+            return null;
+        }
+    }
+}
+
 // [root] directive
 
 namespace Globals {
@@ -40,6 +94,8 @@ namespace Globals {
 
 namespace Products {
     const productFolderPath = conf.homePath + conf.productFolder;
+
+    const dirMirror = new DirectoryMirror(productFolderPath, '.yml', 'product-dir');
 
     function getFilenameByProductId(id: string): string {
         return productFolderPath + id + '.yml';
