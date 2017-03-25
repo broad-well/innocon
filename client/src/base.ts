@@ -11,7 +11,7 @@ export interface FrontRender {
 
 export namespace FrontBase {
     export const serverHost = 'http://broaderator.com:5753';
-    // Assign to this variable ASAP
+    // Assign to this variable ASAP in the renderer
     export let renderer: FrontRender | null = null;
 
     // AJAX tools
