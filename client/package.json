@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Frontend of Michael Peng's Innovation Convention Project",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-polyfill": "^6.23.0",
