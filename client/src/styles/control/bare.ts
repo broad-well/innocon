@@ -31,7 +31,7 @@ class BareRenderer implements Render {
         console.trace();
     }
 }
-new BareRenderer();
+$('body').ready(() => new BareRenderer());
 
 class TabManager {
     // Both of below are selectors fed into Zepto.
