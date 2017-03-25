@@ -4,21 +4,25 @@
  */
 /// <reference path="../typings/index.d.ts" />
 
-export interface FrontRender {
+export interface Render {
+    readonly name: string;
+
     // AJAX tools
-    showAjaxError(xhr: XMLHttpRequest, errType: string, err: Error);
+    showAjaxError(xhr: XMLHttpRequest, errType: string, err: Error): void;
 }
 
-export namespace FrontBase {
+export namespace Base {
     export const serverHost = 'http://broaderator.com:5753';
     // Assign to this variable ASAP in the renderer
-    export let renderer: FrontRender | null = null;
+    export let renderer: Render | null = null;
 
     // AJAX tools
     export function handleError(xhr: XMLHttpRequest, errType: string, err: Error) {
         console.error(`Error occurred during AJAX request: type=${errType} err=${err}`);
-        renderer.showAjaxError(xhr, errType, err);
+        if (renderer !== null)
+            renderer.showAjaxError(xhr, errType, err);
     }
+
     export function get(path: string, success: (data: object) => void, error: (xhr: XMLHttpRequest, errType: string, err: Error) => void = handleError): any {
         $.ajax({
             type: 'GET',
