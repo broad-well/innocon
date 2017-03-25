@@ -1,0 +1,129 @@
+@import 'palette.scss';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,300i');
+
+$font-primary: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+$font-secondary: Lato, Arial, sans-serif;
+
+* {
+    margin: 0 0;
+}
+
+// Basic to-be-extended styles section
+
+button:active {
+    transform: scale(0.9);
+}
+button {
+    transition: all 0.1s ease-in-out;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.colored-bg[bg="green"] {
+    background-color: palette(Green, 800);
+    color: paletteText(Green, 800);
+}
+
+.colored-bg[bg="orange"] {
+    background-color: palette(Orange, 900);
+    color: paletteText(Orange, 900);
+}
+
+// Responsive Design section
+
+// Mobile (420px accomodates iPhone 6 Plus, which is 414px across)
+@media only screen and (max-width: 420px) {
+
+}
+
+// Element-based styles section
+
+* {
+    box-sizing: border-box;
+}
+
+NavBar, NavButton, MainIcon,
+Tabs, Tab,
+Loading,
+Footer {
+    display: flex;
+    font-family: $font-primary;
+}
+
+NavBar {
+    @extend .fullwidth;
+    justify-content: space-between;
+    align-items: center;
+    background-color: palette(Indigo, 600);
+    padding: 0 10px;
+    flex-wrap: wrap;
+}
+
+NavButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+NavButton {
+    @extend button;
+    color: paletteText(Indigo, 800);
+    background-color: palette(Indigo, 800);
+    padding: 15px 25px;
+    font-size: 25px;
+}
+NavButton:hover {
+    background-color: palette(Indigo, 900);
+    cursor: pointer;
+}
+
+MainIcon {
+    font-size: 30px;
+    font-weight: 200;
+    color: paletteText(Indigo, 600);
+}
+MainIcon > b {
+    font-weight: 400;
+    align-self: flex-end;
+}
+
+Tabs {
+    background-color: palette(Grey, 200);
+}
+Tab {
+    flex-direction: column;
+}
+
+Landscape {
+    @extend .colored-bg;
+    width: 100vw;
+    padding: 35px 35px;
+    display: flex;
+    flex-direction: column;
+    font-size: 45px;
+    box-sizing: border-box;
+}
+Landscape[size="huge"] {
+    padding: 110px 70px;
+}
+Landscape > Title {
+    display: block;
+    font-size: 45px;
+    font-weight: 300;   
+}
+Landscape[size="huge"] > Title {
+    font-size: 60px;
+}
+Landscape > Text {
+    font-size: 20px;
+}
+Landscape[size="huge"] > Text {
+    font-size: 30px;
+}
+Landscape > Cite {
+    align-self: flex-end;
+}
+
+Cite {
+    font-size: 10px;
+}
