@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "out",
+        "outDir": "tmp/ts",
         "moduleResolution": "node",
         "strictNullChecks": true,
         "pretty": false,

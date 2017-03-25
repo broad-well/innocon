@@ -95,6 +95,6 @@ namespace Globals {
 
 // Product directive
 
-const dirMirror = new DirectoryMirror(conf.homePath + conf.productFolder, '.yml', 'product-dir');
+const dirMirror = new DirectoryMirror(conf.homePath + conf.productFolder, '.yml', 'product');
 
 server.listen(5753, () => logger.info(`Good news: REST server is listening at ${server.url}`));

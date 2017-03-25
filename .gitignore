@@ -9,6 +9,7 @@ node_modules/
 
 # Grunt output
 /server/out
+/client/tmp
 /client/out
 
 # Typings

@@ -3,6 +3,8 @@
     <head>
         <title>nouvEnergy</title>
         <link rel="stylesheet" href="bare.css">
+        <script src="../../zepto.min.js"></script>
+        <script src="module.js"></script>
     </head>
     <body>
         <NavBar>
@@ -32,9 +34,20 @@
                     <Cite>the press</Cite>
                 </Landscape>
                 <Landscape>
-                    <Title>
+                    <Title>How can I use less Fossil Fuels</Title>
+                    <Text>Browse products.</Text>
+                </Landscape>
             </Tab>
             <Tab tabname="browse">
+                <Repeater class="ajax-bind" id="browse-repeater">
+                    <Card bg="random">
+                        <Title></Title>
+                        <Text></Text>
+                        <Action>Read more</Action>
+                    </Card>
+                </Repeater>
+            </Tab>
+            <Tab tabname="product">
 
             </Tab>
             <Tab tabname="calc">

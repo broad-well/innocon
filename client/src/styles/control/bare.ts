@@ -6,14 +6,29 @@
 import { Render, Base } from '../../base';
 
 class BareRenderer implements Render {
-    readonly name: string = "ControlGroup";
+    static readonly colors: string[] = ['Red', 'Orange', 'Green', 'Blue', 'Purple', 'Indigo'];
+
+    readonly name: string = 'ControlGroup';
 
     constructor() {
         Base.renderer = this;
+
+        {
+            let browseRepeater = $('Repeater#browse-repeater');
+            let repeatContent = browseRepeater.contents();
+            Base.get('/product', data => {
+                for (let productId of (<{listing: string[]}>data).listing) {
+                    Base.get(`/product/${productId}`, data => browseRepeater.parent().append(repeatContent.html().replace('[[name]]', (<{displayName: string}>data).displayName)));
+                }
+            });
+        }
+        // Activate repeaters, then do this
+        $('*[bg="random"]').attr('bg', BareRenderer.colors[Math.floor(Math.random() * BareRenderer.colors.length)]);
     }
 
     public showAjaxError() {
-
+        console.error('AJAX ERROR');
+        console.trace();
     }
 }
 new BareRenderer();
