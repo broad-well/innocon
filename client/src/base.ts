@@ -11,6 +11,9 @@ export interface Render {
     showAjaxError(xhr: XMLHttpRequest, errType: string, err: Error): void;
 }
 
+export type ProductResponse = { displayName: string, description: string, burnerType: string};
+export type ListingResponse = { listing: string[] };
+
 export namespace Base {
     export const serverHost = 'http://broaderator.com:5753';
     // Assign to this variable ASAP in the renderer
@@ -23,13 +26,7 @@ export namespace Base {
             renderer.showAjaxError(xhr, errType, err);
     }
 
-    export function get(path: string, success: (data: object) => void, error: (xhr: XMLHttpRequest, errType: string, err: Error) => void = handleError): any {
-        $.ajax({
-            type: 'GET',
-            url: serverHost + path,
-            dataType: 'json',
-            success: success,
-            error: error,
-        });
+    export function get(path: string, success: (data: object) => void): any {
+        $.getJSON(serverHost + path, success);
     }
 }

@@ -7,10 +7,10 @@
         <NavBar>
             <MainIcon>nouv<b>Energy</b></MainIcon>
             <NavButtons>
-                <NavButton id="nb-home" bind="t-welcome">Home</NavButton>
-                <NavButton id="nb-browse" bind="t-browse">Browse Products</NavButton>
-                <NavButton id="nb-calc" bind="t-calc">Usage Calculator</NavButton>
-                <NavButton id="nb-about" bind="t-about">About This</NavButton>
+                <NavButton id="nb-home" bind="0">Home</NavButton>
+                <NavButton id="nb-browse" bind="1">Browse Products</NavButton>
+                <NavButton id="nb-calc" bind="2">Usage Calculator</NavButton>
+                <NavButton id="nb-about" bind="3">About This</NavButton>
             </NavButtons>
         </NavBar>
         <Tabs>
@@ -18,29 +18,33 @@
             <Tab tabname="welcome">
                 <Landscape bg="green" size="huge">
                     <Title>Welcome to nouvEnergy,</Title>
-                    <Text>an application that spreads awareness of fossil fuels. (and their danger to the Earth)</Text>
+                    <Text>an application that spreads awareness of reducing fossil fuel reliance.</Text>
                 </Landscape>
-                <Landscape bg="orange">
+                <Landscape class="parallax-bg" style="color: white; background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://prairierivers.org/wp-content/uploads/2016/07/dreamstime_l_23675546-e1472010285562.jpg')">
                     <Title>What are Fossil Fuels?</Title>
-                    <Text>The main contributor to global warming. [more!]</Text>
-                    <Cite>kay</Cite>
+                    <Text>Substances that formed underground millions of years ago from dead plants and animals. Typical types of fossil fuels include coal, petroleum (oil), and natural gas.</Text>
                 </Landscape>
-                <Landscape>
+                <Landscape class="parallax-bg" style="color: white; background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://autostopltd.com/blog/wp-content/uploads/2014/05/car-exhaust-color.jpg');background-position-y: -950px;background-position-x: -700px;">
                     <Title>How do Fossil Fuels contribute to Global Warming?</Title>
-                    <Text>They pollute.</Text>
-                    <Cite>the press</Cite>
+                    <Text>Combustion of fossil fuels produces carbon monoxide, a toxic compound that is recognized as a greenhouse gas. Greenhouse gasses float and stay in the stratosphere of the Earth, preventing the heat on Earth from escaping into space.</Text>
+                    <Cite>"Fossil Fuels." <i>Alternative Energy</i>, edited by Neil Schlager and Jayne Weisblatt, vol. 1: Fossil Fuels, Bioenergy, Geothermal Energy, UXL, 2006, pp. 1-55. <i>Gale Virtual Reference Library</i></Cite>
                 </Landscape>
-                <Landscape>
-                    <Title>How can I use less Fossil Fuels</Title>
-                    <Text>Browse products.</Text>
+                <Landscape bg="indigo">
+                    <Title>How can we use less Fossil Fuels?</Title>
+                    <Text>Explore what products you use consume fossil fuels the most, switch to one of their alternatives, and spread the awareness!</Text>
+                    <Actions>
+                        <Action>Browse</Action>
+                    </Actions>
                 </Landscape>
             </Tab>
             <Tab tabname="browse">
                 <Repeater class="ajax-bind" id="browse-repeater">
-                    <Card bg="random">
-                        <Title></Title>
-                        <Text></Text>
-                        <Action>Read more</Action>
+                    <Card prod-id="[[ident]]" bg="[[sev-color]]">
+                        <Title>[[name]]</Title>
+                        <Text>[[desc]]</Text>
+                        <Actions>
+                            <Action>Read more</Action>
+                        </Actions>
                     </Card>
                 </Repeater>
             </Tab>
@@ -51,7 +55,7 @@
 
             </Tab>
             <Tab tabname="about">
-                
+
             </Tab>
         </Tabs>
         <Footer>
