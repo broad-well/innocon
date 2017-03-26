@@ -11,7 +11,7 @@ export interface Render {
     showAjaxError(xhr: XMLHttpRequest, errType: string, err: Error): void;
 }
 
-export type ProductResponse = { displayName: string, description: string, burnerType: string};
+export type ProductResponse = { displayName: string, description: string, burnerType: string, citations: string[] };
 export type ListingResponse = { listing: string[] };
 
 export namespace Base {

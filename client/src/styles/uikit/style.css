@@ -6,3 +6,11 @@ divider {
 ajax-repeater {
     display: none;
 }
+
+.product-card {
+    margin: 15px;
+    max-width: 450px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}

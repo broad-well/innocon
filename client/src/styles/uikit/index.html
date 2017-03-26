@@ -49,11 +49,11 @@
                         </div>
                         <div class="uk-section uk-section-secondary uk-margin-large uk-preserve-color">
                             <div class="uk-container">
-                                <h3 class="uk-light">How can we prevent using Fossil Fuels?</h3>
+                                <h3 class="uk-light">How can we use less of Fossil Fuels?</h3>
                                 <p>Explore some of the most popular products that involves fossil fuels, and if you use any
                                     of them, consider switching to a fossil-fuel-free alternative. Also remember to spread
                                     the word!</p>
-                                <a class="uk-button uk-button-primary" href="#browse" uk-switch-item="1">Browse</a>
+                                <a class="uk-button uk-button-primary" href="#browse" uk-switcher-item="1">Browse</a>
                             </div>
                         </div>
                         <divider></divider>
@@ -63,14 +63,19 @@
                     </div>
                 </li>
                 <li>
-                    <div class="uk-flex uk-flex-row uk-flex-wrap">
+                    <div class="uk-container uk-container-large">
+                        <h1 class="uk-heading-line uk-text-center"><span>Browse Products</span></h1>
+                        <p class="uk-text-center">A collection of common products that involve fossil fuels.</p>
+                    </div>
+                    <divider></divider>
+                    <div class="uk-flex uk-flex-row uk-flex-wrap" style="justify-content: center;">
                         <ajax-repeater id="rep-products">
-                            <div class="uk-card uk-card-default">
+                            <div class="uk-card product-card uk-card-small uk-card-body uk-card-@@Opt_Type@@" product-id="[[id]]" product-type="[[burnType]]">
                                 <div class="uk-card-header">
                                     <h3 class="uk-card-title">[[name]]</h3>
                                 </div>
                                 <div class="uk-card-body">[[description]]</div>
-                                <div class="uk-card-footer">
+                                <div class="uk-card-footer" style="margin-top: auto">
                                     <a class="uk-button uk-button-text">Read more</a>
                                 </div>
                             </div>
@@ -87,6 +92,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.18/js/uikit-icons.min.js" integrity="sha256-14DawicAGydmUlgILWilIY+jh281m4dnI9dPPUrW8rw="
         crossorigin="anonymous"></script>
+    <script src="bundle.js"></script>
 </body>
 
 </html>

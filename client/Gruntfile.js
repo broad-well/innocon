@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         configuration: 'tslint.json',
       },
       files: {
-        src: ['src/styles/control/bare.ts', 'src/base.ts'],
+        src: ['src/styles/**/*.ts', 'src/base.ts'],
       },
     },
     ts: {
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       stylehtml: {
         files: [
           { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/control/bare.html'], dest: 'out/styles/control/' },
-          { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/uikit/index.html'], dest: 'out/styles/uikit/' },
+          { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/uikit/*'], dest: 'out/styles/uikit/' },
         ],
       },
       zepto: {
@@ -41,7 +41,9 @@ module.exports = function (grunt) {
     browserify: {
       dist: {
         files: {
-          'out/styles/control/module.js': ['tmp/ts/**/*.js'],
+          'out/styles/control/module.js': ['tmp/ts/base.js', 'tmp/ts/styles/control/*.js'],
+          'out/styles/uikit/bundle.js': ['tmp/ts/base.js', 'tmp/ts/styles/uikit/*.js'],
+
         },
         options: {
           transform: [['babelify', { presets: ['es2015'] }]],
