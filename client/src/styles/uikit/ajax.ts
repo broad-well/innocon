@@ -41,6 +41,7 @@ window['productInfo'] = {};
 
 // Product Modal management
 window['refreshProductModal'] = (id: string) => {
-    $('#pi-name').text(window['productInfo'][id].displayName);
-    $('#pi-essay').html(`<h3>Description</h3><p>${window['productInfo'][id].description}</p><i>${window['productInfo'][id].burnerType}</i>`);
+    let productInfo = <ProductResponse>window['productInfo'][id];
+    $('#pi-name').text(productInfo.displayName);
+    $('#pi-essay').html(Base.createPassageFromProduct(productInfo));
 };

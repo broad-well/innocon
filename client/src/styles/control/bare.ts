@@ -10,6 +10,11 @@ class BareRenderer implements Render {
     static readonly colors: string[] = ['red', 'orange', 'green', 'blue', 'purple', 'indigo'];
 
     readonly name: string = 'ControlGroup';
+    private readonly sevColorMap: {[burnerType: string]: string} = {
+        'burns-to-run': 'red',
+        'burns-to-produce': 'orange',
+        'alternative': 'green',
+    };
 
     constructor() {
         Base.renderer = this;
@@ -24,7 +29,8 @@ class BareRenderer implements Render {
                             repeatContent.split('[[name]]').join((<ProductResponse>data).displayName)
                                 .split('[[desc]]').join((<ProductResponse>data).description)
                                 .split('[[ident]]').join(productId)
-                                .split('[[sev-color]]').join((<ProductResponse>data).burnerType === 'alternative' ? 'green' : 'red'));
+                                .split('[[sev-text]]').join((<ProductResponse>data).burnerType.split('-').join(' '))
+                                .split('[[sev-color]]').join(this.sevColorMap[(<ProductResponse>data).burnerType]));
 
                         window['productInfo'][productId] = data;
                     });
@@ -94,9 +100,8 @@ window['frontendMan'] = {
     overlay: mainOverlay,
     triggerOverlay: (productId: string) => {
         let productInfo = <ProductResponse>window['productInfo'][productId];
-        $('#productinfo-card > Title').text(window['productInfo'][productId].displayName);
-        $('#productinfo-card > Text').html(`<h3>Description</h3><p>${productInfo.description}</p>
-            <h3>Burner type</h3><p>${productInfo.burnerType}</p>`);
+        $('#productinfo-card > Title').text(productInfo.displayName);
+        $('#productinfo-card > Text').html(Base.createPassageFromProduct(productInfo));
         mainOverlay.toggleVisibility();
     }
 };

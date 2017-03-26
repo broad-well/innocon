@@ -187,6 +187,7 @@ Card > Text {
     font-size: 14px;
     padding: 10px 10px;
 }
+
 Actions {
     display: flex;
     flex-direction: row;
@@ -222,20 +223,30 @@ Overlay {
     background-color: rgba(0, 0, 0, 0.3);
     justify-content: center;
     align-items: center;
-}
-Overlay[overlay-state="hidden"] {
-    display: none;
-}
-Overlay[overlay-state="visible"] {
+    transition: all 0.4s ease;
     display: flex;
 }
+Overlay[overlay-state="hidden"] {
+    opacity: 0;
+    visibility: hidden;
+}
+Overlay[overlay-state="visible"] {
+    opacity: 1;
+}
+Overlay[overlay-state="hidden"] > Card {
+    transform: scale(0.8);
+} 
+Overlay[overlay-state="visible"] > Card {
+    transform: scale(1);
+} 
 Overlay > Card {
     background-color: #eee;
     color: #111;
-    min-width: 200px;
-    min-height: 400px;
+    min-width: 430px;
+    min-height: 300px;
     box-shadow: none;
     align-self: center;
+    transition: all 0.4s ease;
 }
 Overlay > Card > Title {
     border-bottom: gray 1px;
@@ -248,12 +259,20 @@ Overlay > Card > Text > p {
     padding: 5px;
     margin-bottom: 4px;
 }
-Overlay Close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: white;
+Overlay > Card > Text > hr {
+    margin-top: 15px;
 }
-Overlay Close::after {
-    content: "CLOSE";
+
+Badge {
+    @extend .colored-bg;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    display: flex;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+Card > Badge {
+    margin-right: auto;
+    margin-left: 7px;
 }
