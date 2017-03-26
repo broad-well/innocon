@@ -5,6 +5,7 @@
 
 import { Render, Base, ProductResponse, ListingResponse } from '../../base';
 
+window['productInfo'] = {};
 class BareRenderer implements Render {
     static readonly colors: string[] = ['red', 'orange', 'green', 'blue', 'purple', 'indigo'];
 
@@ -18,12 +19,15 @@ class BareRenderer implements Render {
             let repeatContent = browseRepeater.html();
             Base.get('/product', (data) => {
                 for (let productId of (<ListingResponse>data).listing) {
-                    Base.get(`/product/${productId}`,
-                        (data) => browseRepeater.parent().append(
-                            repeatContent.replace('[[name]]', (<ProductResponse>data).displayName)
-                                .replace('[[desc]]', (<ProductResponse>data).description)
-                                .replace('[[ident]]', productId)
-                                .replace('[[sev-color]]', (<ProductResponse>data).burnerType === 'alternative' ? 'green': 'red')));
+                    Base.get(`/product/${productId}`, (data) => {
+                            browseRepeater.parent().append(
+                            repeatContent.split('[[name]]').join((<ProductResponse>data).displayName)
+                                .split('[[desc]]').join((<ProductResponse>data).description)
+                                .split('[[ident]]').join(productId)
+                                .split('[[sev-color]]').join((<ProductResponse>data).burnerType === 'alternative' ? 'green' : 'red'));
+
+                        window['productInfo'][productId] = data;
+                    });
                 }
             });
         }
@@ -66,6 +70,33 @@ class TabManager {
 }
 let mainTabs = new TabManager('Tabs');
 
+class OverlayManager {
+    protected element: string = 'Overlay';
+
+    constructor(triggerName: string) {
+        this.element += `[trigger=${triggerName}]`;
+        $(this.element).attr('overlay-state', 'hidden');
+    }
+
+    toggleVisibility() {
+        let currentVal = $(this.element).attr('overlay-state');
+        $(this.element).attr('overlay-state', currentVal === 'hidden' ? 'visible' : 'hidden');
+        document.onmousedown = () => {
+            this.toggleVisibility();
+            document.onmousedown = () => {};
+        };
+    }
+}
+let mainOverlay = new OverlayManager('productinfo');
+
 window['frontendMan'] = {
-    tabs: mainTabs
+    tabs: mainTabs,
+    overlay: mainOverlay,
+    triggerOverlay: (productId: string) => {
+        let productInfo = <ProductResponse>window['productInfo'][productId];
+        $('#productinfo-card > Title').text(window['productInfo'][productId].displayName);
+        $('#productinfo-card > Text').html(`<h3>Description</h3><p>${productInfo.description}</p>
+            <h3>Burner type</h3><p>${productInfo.burnerType}</p>`);
+        mainOverlay.toggleVisibility();
+    }
 };

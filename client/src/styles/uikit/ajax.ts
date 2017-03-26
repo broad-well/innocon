@@ -14,6 +14,7 @@ class UIKitRenderer implements Render {
 }
 
 // Product cards
+window['productInfo'] = {};
 {
     let wrapper = $('#rep-products');
     let card = wrapper.html();
@@ -21,18 +22,25 @@ class UIKitRenderer implements Render {
 
     function dataToCard(id: string, data: ProductResponse) {
         return card
-            .replace('[[name]]', data.displayName)
-            .replace('[[description]]', data.description)
-            .replace('[[id]]', id)
-            .replace('[[burnType]]', data.burnerType)
-            .replace('@@Opt_Type@@', data.burnerType === 'alternative' ? 'primary' : 'secondary');
+            .replace(/\[\[name\]\]/g, data.displayName)
+            .replace(/\[\[description\]\]/g, data.description)
+            .replace(/\[\[id\]\]/g, id)
+            .replace(/\[\[burnType\]\]/g, data.burnerType)
+            .replace(/@@Opt_Type@@/g, data.burnerType === 'alternative' ? 'primary' : 'secondary');
     }
 
     Base.get('/product', data => {
         for (let id of (<ListingResponse>data).listing) {
             Base.get(`/product/${id}`, productInfo => {
                 parent.append(dataToCard(id, <ProductResponse>productInfo));
+                window['productInfo'][id] = <ProductResponse>productInfo;
             });
         }
     });
 }
+
+// Product Modal management
+window['refreshProductModal'] = (id: string) => {
+    $('#pi-name').text(window['productInfo'][id].displayName);
+    $('#pi-essay').html(`<h3>Description</h3><p>${window['productInfo'][id].description}</p><i>${window['productInfo'][id].burnerType}</i>`);
+};

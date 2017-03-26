@@ -4,6 +4,12 @@
         <title>nouvEnergy</title>
     </head>
     <body>
+        <Overlay trigger="productinfo">
+            <Card id="productinfo-card">
+                <Title></Title>
+                <Text></Text>
+            </Card>
+        </Overlay>
         <NavBar>
             <MainIcon>nouv<b>Energy</b></MainIcon>
             <NavButtons>
@@ -26,7 +32,7 @@
                 </Landscape>
                 <Landscape class="parallax-bg" style="color: white; background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://autostopltd.com/blog/wp-content/uploads/2014/05/car-exhaust-color.jpg') fixed;background-position-y: -640px;background-position-x: -700px;">
                     <Title>How do Fossil Fuels contribute to Global Warming?</Title>
-                    <Text>Combustion of fossil fuels produces carbon monoxide, a toxic compound that is recognized as a greenhouse gas. Greenhouse gasses float and stay in the stratosphere of the Earth, preventing the heat on Earth from escaping into space.</Text>
+                    <Text>Combustion of fossil fuels produces carbon monoxide, a toxic compound that is recognized as a greenhouse gas. Greenhouse gasses float and stay in the atmosphere of the Earth, preventing the heat on Earth from escaping into space.</Text>
                     <Cite>"Fossil Fuels." <i>Alternative Energy</i>, edited by Neil Schlager and Jayne Weisblatt, vol. 1: Fossil Fuels, Bioenergy, Geothermal Energy, UXL, 2006, pp. 1-55. <i>Gale Virtual Reference Library</i></Cite>
                 </Landscape>
                 <Landscape bg="indigo">
@@ -43,13 +49,10 @@
                         <Title>[[name]]</Title>
                         <Text>[[desc]]</Text>
                         <Actions>
-                            <Action>Read more</Action>
+                            <Action onclick="window.frontendMan.triggerOverlay('[[ident]]')">Read more</Action>
                         </Actions>
                     </Card>
                 </Repeater>
-            </Tab>
-            <Tab tabname="product">
-
             </Tab>
             <Tab tabname="calc">
 

@@ -80,7 +80,8 @@ NavBar, NavButton, MainIcon,
 Tabs, Tab,
 Loading,
 Footer,
-Card {
+Card,
+Overlay {
     display: flex;
     font-family: $font-primary;
 }
@@ -212,4 +213,47 @@ Actions > Action:hover {
 Tab[tabname="browse"] > Card {
     margin: 20px 20px;
     max-width: 400px;
+}
+
+Overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+}
+Overlay[overlay-state="hidden"] {
+    display: none;
+}
+Overlay[overlay-state="visible"] {
+    display: flex;
+}
+Overlay > Card {
+    background-color: #eee;
+    color: #111;
+    min-width: 200px;
+    min-height: 400px;
+    box-shadow: none;
+    align-self: center;
+}
+Overlay > Card > Title {
+    border-bottom: gray 1px;
+}
+Overlay > Card > Text > h3 {
+    font-size: large;
+    margin-top: 10px;
+}
+Overlay > Card > Text > p {
+    padding: 5px;
+    margin-bottom: 4px;
+}
+Overlay Close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+}
+Overlay Close::after {
+    content: "CLOSE";
 }
