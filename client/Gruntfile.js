@@ -29,6 +29,7 @@ module.exports = function (grunt) {
       stylehtml: {
         files: [
           { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/control/bare.html'], dest: 'out/styles/control/' },
+          { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/uikit/index.html'], dest: 'out/styles/uikit/' },
         ],
       },
       zepto: {

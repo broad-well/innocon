@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>nouvEnergy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.18/css/uikit.min.css" />
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="uk-grid" style="margin: 20px">
+        <div class="uk-width-small">
+            <ul class="uk-nav uk-nav-default" uk-switcher="connect: #mainnav; animation: uk-animation-fade;">
+                <li class="uk-active"><a href="">Home</a></li>
+                <li><a href="#products">Browse Products</a></li>
+                <li><a href="#calculator">Usage Calculator</a></li>
+                <li><a href="#about">About This</a></li>
+            </ul>
+        </div>
+        <div class="uk-width-expand">
+            <ul uk-switcher="animation: uk-animation-fade" class="uk-switcher" id="mainnav">
+                <li>
+                    <div class="uk-container uk-container-large">
+                        <h1 class="uk-heading-line uk-text-center"><span>Welcome to nouvEnergy<br></span></h1>
+                        <p class="uk-text-center">A place to learn and act about Fossil Fuels, an important contributor to Global Warming</p>
+                    </div>
+                    <divider></divider>
+                    <div class="uk-flex uk-flex-center uk-flex-column">
+                        <div class="uk-container">
+                            <div class="uk-margin-large">
+                                <h3 class="">What are Fossil Fuels?</h3>
+                                <p class="">Substances that formed underground millions of years ago from dead plants and animals. Typical
+                                    types of fossil fuels include coal, petroleum (oil), and natural gas.</p>
+                            </div>
+                            <div class="uk-margin-large">
+                                <h3 class="">What is Global Warming?</h3>
+                                <p class="">A term given to a recently observed rise in global temperature that is believed to be caused
+                                    by humans. Many scientists believe Global Warming is caused by increasing amounts of
+                                    gas in the atmosphere called <i>greenhouse gases</i>.</p>
+                            </div>
+                            <div class="uk-margin-large">
+                                <h3 class="">How do Fossil Fuels contribute to Global Warming?</h3>
+                                <p class="">Combustion of fossil fuels releases carbon monoxide, a toxic compound that is recognized
+                                    as a greenhouse gas. Greenhouse gasses float and stay in the stratosphere of the Earth,
+                                    preventing the heat on Earth from escaping into space.</p>
+                            </div>
+                        </div>
+                        <div class="uk-section uk-section-secondary uk-margin-large uk-preserve-color">
+                            <div class="uk-container">
+                                <h3 class="uk-light">How can we prevent using Fossil Fuels?</h3>
+                                <p>Explore some of the most popular products that involves fossil fuels, and if you use any
+                                    of them, consider switching to a fossil-fuel-free alternative. Also remember to spread
+                                    the word!</p>
+                                <a class="uk-button uk-button-primary" href="#browse" uk-switch-item="1">Browse</a>
+                            </div>
+                        </div>
+                        <divider></divider>
+                        <h6 class="uk-margin-remove">Citations</h6>
+                        <cite style="font-size:10px">"Fossil Fuels." Alternative Energy, edited by Neil Schlager and Jayne Weisblatt, vol. 1: Fossil Fuels, Bioenergy, Geothermal Energy, UXL, 2006, pp. 1-55. Gale Virtual Reference Library</cite>
+                        <cite style="font-size:10px">"Climate Change and Global Warming." UXL Encyclopedia of Weather and Natural Disasters, vol. 5: Humans, Weather, and Natural Disasters, UXL, 2008, pp. 727-769. Gale Virtual Reference Library</cite>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-flex uk-flex-row uk-flex-wrap">
+                        <ajax-repeater id="rep-products">
+                            <div class="uk-card uk-card-default">
+                                <div class="uk-card-header">
+                                    <h3 class="uk-card-title">[[name]]</h3>
+                                </div>
+                                <div class="uk-card-body">[[description]]</div>
+                                <div class="uk-card-footer">
+                                    <a class="uk-button uk-button-text">Read more</a>
+                                </div>
+                            </div>
+                        </ajax-repeater>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.18/js/uikit.min.js" integrity="sha256-LUEy7nYsrDZzEXVbDyFBiGH7w/7Jmy21CEB9Oha8hvc="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.18/js/uikit-icons.min.js" integrity="sha256-14DawicAGydmUlgILWilIY+jh281m4dnI9dPPUrW8rw="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
