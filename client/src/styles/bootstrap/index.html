@@ -15,34 +15,78 @@
         </nav>
         <main>
             <section id="welcome">
-                <h1 centered>Welcome to nouvEnergy</h1>
-                <i centered>Knowledge and information on avoiding fossil fuels</i>
-                <hr>
-                
-                <div class="panel panel-info">
-                      <div class="panel-heading">
-                            <h3 class="panel-title">What is climate change?</h3>
-                      </div>
-                      <div class="panel-body">
+                <div massive darkbg style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://www.aviationcv.com/aviation-blog/wp-content/uploads/2016/06/Solar_Impulse_2_Credit-to-Solar-Impulse.jpg') center/cover">
+                    <h1>Welcome to nouvEnergy</h1>
+                    <i>Resources for reducing fossil fuel dependence</i>
+                </div>
+                <div class="row" style="display: flex; flex-wrap: wrap;">
+                    <div class="col-md-6 infobox-container bg-maroon" darkbg>
+                        <div infobox>
+                            <h3>What is climate change?</h3>
                             <p>A term given to the phenomenon of rising temperatures and a shift in weather patterns worldwide, believed to be caused by human activities.</p>
-                            <p>Another common name for climate change is global warming.</p>
-                            <p>Climate change is mainly caused by the greenhouse effect, which describes the trapping by the earth's atmosphere of heat energy radiated from the sun.</p>
-                            <p>The greenhouse effect is triggered by greenhouse gases, which prevent heat from escaping the atmosphere.</p>
-                            <p>Greenhouse gases are the byproduct of burning fossil fuels.</p>
-                      </div>
+                            <cite>Chiras, Daniel D. "Global Climate Change." Encyclopedia Americana. Scholastic Grolier Online. Accessed 27 Mar. 2017.</cite>
+                        </div>
+                    </div>
+                    <div class="col-md-6 infobox-container bg-blue" darkbg>
+                        <div infobox>
+                            <h3>What are fossil fuels?</h3>
+                            <p>Forms of fuel that are formed from the remains of living things that died millions of years ago. Common forms include oil, natural gas, and coal.</p>
+                            <cite>"Fossil Fuels." The New Book of Knowledge. Scholastic Grolier Online. Accessed 27 Mar. 2017.</cite>
+                        </div>
+                    </div>
+                    <div class="col-md-6 infobox-container bg-olive" darkbg>
+                        <div infobox>
+                            <h3>How do fossil fuels relate to climate change?</h3>
+                            <p>The combustion of fossil fuels release greenhouse gases, which trap the heat in the atmosphere from escaping into space. The most notable byproduct is carbon dioxide.</p>
+                            <cite>"Fossil Fuels." The New Book of Knowledge. Scholastic Grolier Online. Accessed 27 Mar. 2017.</cite>
+                            <cite>Chiras, Daniel D. "Global Climate Change." Encyclopedia Americana. Scholastic Grolier Online. Accessed 27 Mar. 2017.</cite>
+                        </div>
+                    </div>
+                    <div class="col-md-6 infobox-container bg-navy" darkbg>
+                        <div infobox>
+                            <h3>How can I slow down air pollution?</h3>
+                            <p>By browsing through the products below, you can learn about how fossil fuel reliance relates to you, and what fossil-fuel-free alternatives are available.</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="panel panel-info">
-                      <div class="panel-heading">
-                            <h3 class="panel-title">What are fossil fuels?</h3>
-                      </div>
-                      <div class="panel-body">
-                          <p></p>
-                      </div>
-                </div>
-                
             </section>
             <section id="browse">
+                <div massive darkbg style="background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://upload.wikimedia.org/wikipedia/commons/d/d8/Douglas_DC-8_producing_contrails_at_a_biofuel_test.jpg') center/cover">
+                    <h1>Browse Products</h1>
+                    <i>Experience the ubiquity of fossil fuel reliance in things around you</i>
+                </div>
+                <div id="prod-shell">
+                    <ajax-repeater id="prod-rep">
+                        <div class="panel panel-[[level]] prod-panel">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">[[name]]</h2>
+                            </div>
+                            <div class="panel-body prod-description">
+                                <h5>[[description]]</h5>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-link prod-more" data-toggle="modal" data-target="#prod-info" onclick="window.modal('[[id]]')">Read more</button>
+                            </div>
+                        </div>
+                    </ajax-repeater>
+                </div>
+
+                <template id="prod-modal-template">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" type="button" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                <h2 class="modal-title">[[name]]</h2>
+                            </div>
+                            <div class="modal-body">[[passage]]</div>
+                            <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button></div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="modal fade" id="prod-info" role="dialog" tabindex="-1">
+                    <h1>Something is really wrong! Check JS Console.</h1>
+                </div>
 
             </section>
             <section id="calc">
@@ -51,11 +95,12 @@
         </main>
 
         <!-- Scripts and Stylesheets -->
-        <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css">
+        <script src="bundle.js"></script>
     </body>
 </html>

@@ -30,6 +30,7 @@ module.exports = function (grunt) {
         files: [
           { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/control/bare.html'], dest: 'out/styles/control/' },
           { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/uikit/*'], dest: 'out/styles/uikit/' },
+          { expand: true, flatten: true, filter: 'isFile', src: ['src/styles/bootstrap/*'], dest: 'out/styles/bootstrap/' },
         ],
       },
       zepto: {
@@ -43,7 +44,7 @@ module.exports = function (grunt) {
         files: {
           'out/styles/control/module.js': ['tmp/ts/base.js', 'tmp/ts/styles/control/*.js'],
           'out/styles/uikit/bundle.js': ['tmp/ts/base.js', 'tmp/ts/styles/uikit/*.js'],
-
+          'out/styles/bootstrap/bundle.js': ['tmp/ts/base.js', 'tmp/ts/styles/bootstrap/*.js'],
         },
         options: {
           transform: [['babelify', { presets: ['es2015'] }]],
@@ -55,4 +56,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('default', ['tslint', 'ts', 'browserify', 'sass', 'copy']);
+  grunt.registerTask('script', ['tslint', 'ts', 'browserify']);
 };

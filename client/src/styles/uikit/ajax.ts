@@ -12,6 +12,7 @@ class UIKitRenderer implements Render {
         alert('AJAX Error: The app could not connect to the server! Please tell Michael, and include the JavaScript console if possible.');
     }
 }
+Base.renderer = new UIKitRenderer();
 
 // Product cards
 window['productInfo'] = {};

@@ -13,7 +13,6 @@
     },
     "include": [
         "src/base.ts",
-        "src/styles/control/bare.ts",
-        "src/styles/uikit/ajax.ts"
+        "src/styles/**/*.ts"
     ]
 }
