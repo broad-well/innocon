@@ -40,7 +40,7 @@ class BareRenderer implements Render {
         // Activate repeaters, then do this
         setTimeout(() => {
             $('*[bg="random"]').forEach(item => $(item).attr('bg', BareRenderer.colors[Math.floor(Math.random() * BareRenderer.colors.length)]));
-            $('NavButton').click(evt => window['frontendMan'].tabs.switchTo(Number(evt.srcElement!.getAttribute('bind'))));
+            $('*[tabcontroller], NavButton').click(evt => window['frontendMan'].tabs.switchTo(Number((evt.target as HTMLElement).getAttribute('bind'))));
         }, 500);
     }
 
