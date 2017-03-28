@@ -26,7 +26,7 @@ module.exports = {
             display: 'What is the average Miles Per Gallon (MPG) of your family vehicle(s)?',
             tip: 'Check manufacturer website(s) for this information',
             low: 1, high: Infinity,
-            handle: (score, context, val) => { }
+            handle: (score, context, val) => score
         },
         {
             id: 'mpd',
