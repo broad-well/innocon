@@ -10,6 +10,7 @@ import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as logger from 'loglevel';
 import * as path from 'path';
+import { CalcRest } from './calc';
 let conf = require('./config');
 
 export const server = Restify.createServer();
@@ -97,5 +98,14 @@ namespace Globals {
 // Product directive
 
 const dirMirror = new DirectoryMirror(conf.homePath + conf.productFolder, '.yml', 'product');
+
+// Calculator
+
+server.get('/calculator/layout', function _getCalcLayout(req, res) {
+    res.send(200, CalcRest.getTransportForm());
+});
+server.post('/calculator/form', (req, res) => {
+    res.send(201, CalcRest.calculateScore(req.body));
+});
 
 server.listen(5753, () => logger.info(`Good news: REST server is listening at ${server.url}`));
