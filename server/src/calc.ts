@@ -6,10 +6,10 @@
 let config = require('./config');
 const calcForm = (config as any).calcForm;
 
-function getHandlerById(id: string): ((score, context, val) => number)|null {
+function getAttributeById(id: string, attr: string): any {
     for (let element of calcForm) {
         if (element.id === id) {
-            return element.handle;
+            return element[attr];
         }
     }
     return null;
@@ -18,9 +18,10 @@ function getHandlerById(id: string): ((score, context, val) => number)|null {
 function getScore(answers: {[id: string]: number|boolean|string}): number {
     let out = 100;
     for (let id in answers) {
-        let handler = getHandlerById(id);
+        let handler = getAttributeById(id, 'handle');
+        let expectedDataType = getAttributeById(id, '@type');
         if (handler !== null) {
-            out = handler(out, answers, answers[id]);
+            out = handler(out, answers, expectedDataType === 'string' ? answers[id] : Number(answers[id]));
         }
     }
     return out;

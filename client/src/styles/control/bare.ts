@@ -37,6 +37,17 @@ class BareRenderer implements Render {
                 }
             });
         }
+        {
+            Base.get('/calculator/layout', layout => {
+                for (let elem of <any[]>layout) {
+                    let template = $(`.form-element-template[elem-type="${elem['@type']}"]`);
+                    template.parent().append(template.html()
+                        .split('[[id]]').join(elem.id)
+                        .split('[[display]]').join(elem.display)
+                        .split('[[tip]]').join(elem.tip || ''));
+                }
+            });
+        }
         // Activate repeaters, then do this
         setTimeout(() => {
             $('*[bg="random"]').forEach(item => $(item).attr('bg', BareRenderer.colors[Math.floor(Math.random() * BareRenderer.colors.length)]));

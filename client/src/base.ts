@@ -36,6 +36,10 @@ export namespace Base {
         $.getJSON(serverHost + path, success);
     }
 
+    export function post(path: string, data: any, success: (data: object) => void): any {
+        $.post(serverHost + path, data, success);
+    }
+
     export function createPassageFromProduct(product: ProductResponse): string {
         let bodyText = '';
 
