@@ -15,6 +15,7 @@ let conf = require('./config');
 
 export const server = Restify.createServer();
 server.use(Restify.CORS());
+server.use(Restify.bodyParser());
 
 // Utilties
 

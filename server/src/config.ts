@@ -33,21 +33,21 @@ module.exports = {
             '@type': 'range',
             display: 'How many miles do your family vehicle(s) achieve per day?',
             low: 0, high: 300,
-            handle: (score, context, val) => score - val * 3.6525 / context.values.mpg
+            handle: (score, context, val) => score - val * 3 / context.mpg
         },
         {
             id: 'air-mpm',
             '@type': 'range',
             display: 'On average, how many miles do you travel on a jet airplane per month?',
             low: 0, high: 300000,
-            handle: (score, context, val) => score - val * .4
+            handle: (score, context, val) => score - val * .03
         },
         {
             id: 'taxi-mpw',
             '@type': 'number',
             display: 'On average, how many miles do you travel in a taxi per week?',
             tip: 'This includes Uber, Lyft, etc.',
-            handle: (score, context, val) => score - val / 40 * 0.1
+            handle: (score, context, val) => score - val / 40 * 0.08
         },
         {
             '@type': 'header',
@@ -58,14 +58,14 @@ module.exports = {
             '@type': 'number',
             display: 'What was the average electric bill per month for the past year?',
             tip: 'Consult your electricity provider for this information.',
-            handle: (score, context, val) => score - val * 0.4
+            handle: (score, context, val) => score - val * 0.07
         },
         {
             id: 'gas-bill',
             '@type': 'number',
             display: 'What was the average (natural) gas bill per month for the past year?',
             tip: 'Consult your (natural) gas provider for this information.',
-            handle: (score, context, val) => score - val * 0.8
+            handle: (score, context, val) => score - val * 0.13
         },
     ],
 };

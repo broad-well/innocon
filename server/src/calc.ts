@@ -18,8 +18,8 @@ function getHandlerById(id: string): ((score, context, val) => number)|null {
 function getScore(answers: {[id: string]: number|boolean|string}): number {
     let out = 100;
     for (let id in answers) {
-        let handler;
-        if ((handler = getHandlerById(id)) !== null) {
+        let handler = getHandlerById(id);
+        if (handler !== null) {
             out = handler(out, answers, answers[id]);
         }
     }
