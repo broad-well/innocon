@@ -3,7 +3,7 @@
  * Unlicense: (Almost) freedom
  */
 
-import * as config from './config';
+let config = require('./config');
 const calcForm = (config as any).calcForm;
 
 function getHandlerById(id: string): ((score, context, val) => number)|null {
