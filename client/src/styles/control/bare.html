@@ -56,29 +56,29 @@
                 </Repeater>
             </Tab>
             <Tab tabname="calc">
+                <Repeater class="ajax-bind form-element-template" elem-type="header">
+                    <h1>[[display]]</h1>
+                </Repeater>
+                <Repeater class="ajax-bind form-element-template" elem-type="number">
+                    <FormElement>
+                        <Left>
+                            <label for="fe-[[id]]">[[display]]</label>
+                            <tip>[[tip]]</tip>
+                        </Left>
+                        <input type="number" name="[[id]]" id="fe-[[id]]">
+                    </FormElement>
+                </Repeater>
+                <Repeater class="ajax-bind form-element-template" elem-type="range">
+                    <FormElement>
+                        <Left>
+                            <label for="fe-[[id]]">[[display]]</label>
+                            <tip>[[tip]]</tip>
+                        </Left>
+                        <input type="number" name="[[id]]" id="fe-[[id]]">
+                    </FormElement>
+                </Repeater>
                 <form method="POST" action="http://broaderator.com:5753/calculator/form" id="calc-form">
-                    <Repeater class="ajax-bind form-element-template" elem-type="header">
-                        <h1>[[display]]</h1>
-                    </Repeater>
-                    <Repeater class="ajax-bind form-element-template" elem-type="number">
-                        <FormElement>
-                            <Left>
-                                <label for="fe-[[id]]">[[display]]</label>
-                                <tip>[[tip]]</tip>
-                            </Left>
-                            <input type="number" name="[[id]]" id="fe-[[id]]">
-                        </FormElement>
-                    </Repeater>
-                    <Repeater class="ajax-bind form-element-template" elem-type="range">
-                        <FormElement>
-                            <Left>
-                                <label for="fe-[[id]]">[[display]]</label>
-                                <tip>[[tip]]</tip>
-                            </Left>
-                            <input type="number" name="[[id]]" id="fe-[[id]]">
-                        </FormElement>
-                    </Repeater>
-                    <input type="submit">Submit</input>
+                    <input type="submit" value="Submit for Calculation">
                 </form>
             </Tab>
             <Tab tabname="about">

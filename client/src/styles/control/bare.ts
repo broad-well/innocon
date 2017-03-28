@@ -41,13 +41,27 @@ class BareRenderer implements Render {
             Base.get('/calculator/layout', layout => {
                 for (let elem of <any[]>layout) {
                     let template = $(`.form-element-template[elem-type="${elem['@type']}"]`);
-                    template.parent().append(template.html()
+                    $('#calc-form').append(template.html()
                         .split('[[id]]').join(elem.id)
                         .split('[[display]]').join(elem.display)
                         .split('[[tip]]').join(elem.tip || ''));
                 }
             });
         }
+        $('#calc-form').on('submit', function (evt: Event): boolean {
+            let jsonOut = {};
+            $('#calc-form input').forEach(item => {
+                if (item.name.length > 0) {
+                    jsonOut[item.name] = item.type === 'number' ? Number(item.value): item.value;
+                }
+            });
+            Base.post('/calculator/form', jsonOut, data => {
+                alert(`Your score is ${data}`);
+            });
+
+            evt.preventDefault();
+            return false;
+        });
         // Activate repeaters, then do this
         setTimeout(() => {
             $('*[bg="random"]').forEach(item => $(item).attr('bg', BareRenderer.colors[Math.floor(Math.random() * BareRenderer.colors.length)]));
@@ -60,7 +74,7 @@ class BareRenderer implements Render {
         console.trace();
     }
 }
-$('body').ready(() => new BareRenderer());
+$('body').ready(() => Base.renderer = new BareRenderer());
 
 class TabManager {
     // Both of below are selectors fed into Zepto.

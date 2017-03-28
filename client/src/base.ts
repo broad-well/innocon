@@ -28,8 +28,11 @@ export namespace Base {
     // AJAX tools
     export function handleError(xhr: XMLHttpRequest, errType: string, err: Error) {
         console.error(`Error occurred during AJAX request: type=${errType} err=${err}`);
-        if (renderer !== null)
+        if (renderer !== null) {
             renderer.showAjaxError(xhr, errType, err);
+        } else {
+            alert('renderer not set and ajax error encountered');
+        }
     }
 
     export function get(path: string, success: (data: object) => void): any {
@@ -37,7 +40,14 @@ export namespace Base {
     }
 
     export function post(path: string, data: any, success: (data: object) => void): any {
-        $.post(serverHost + path, data, success);
+        $.ajax({
+            url: serverHost + path,
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            contentType: 'application/json',
+            success: success
+        });
     }
 
     export function createPassageFromProduct(product: ProductResponse): string {

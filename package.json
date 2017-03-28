@@ -1,0 +1,15 @@
+{
+  "name": "mp-innocon",
+  "version": "0.0.1",
+  "description": "Michael Peng's Innovation Convention project",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-run-grunt": "^0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Peng <michael@mcmoo.org>",
+  "license": "Unlicense"
+}

@@ -16,6 +16,7 @@ function getAttributeById(id: string, attr: string): any {
 }
 
 function getScore(answers: {[id: string]: number|boolean|string}): number {
+    console.info(`getScore called with ${answers}`);
     let out = 100;
     for (let id in answers) {
         let handler = getAttributeById(id, 'handle');
