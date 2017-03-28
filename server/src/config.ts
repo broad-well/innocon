@@ -5,7 +5,7 @@
  */
 /// <reference path="../typings/index.d.ts" />
 
-export default <any> {
+module.exports = {
     // Product metadata
     'productName': 'nouvEnergy',
     'productVersion': 1,
