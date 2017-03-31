@@ -55,8 +55,8 @@ class BareRenderer implements Render {
                     jsonOut[item.name] = item.type === 'number' ? Number(item.value): item.value;
                 }
             });
-            Base.post('/calculator/form', jsonOut, data => {
-                alert(`Your score is ${data}`);
+            Base.post('/calculator/form', JSON.stringify(jsonOut), data => {
+                alert(`Your score is ${Math.floor(Number(data))} out of 100.`);
             });
 
             evt.preventDefault();

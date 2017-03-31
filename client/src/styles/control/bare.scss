@@ -162,6 +162,10 @@ Landscape > Cite {
 Landscape[align="center"] > * {
     text-align: center;
 }
+Landscape a {
+    color: #ddd;
+    transition: all 0.1s ease-out;
+}
 
 Cite {
     font-size: 10px;
